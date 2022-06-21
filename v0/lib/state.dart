@@ -32,6 +32,13 @@ class StateManager {
     _buttonsDown[action] = down;
   }
 
+  bool get rocketMoving {
+    return _buttonsDown[RocketAction.left] == true ||
+        _buttonsDown[RocketAction.forward] == true ||
+        _buttonsDown[RocketAction.right] == true ||
+        false;
+  }
+
   double get rocketX {
     return _rocketX;
   }

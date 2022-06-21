@@ -32,8 +32,12 @@ class _GamePageState extends State<GamePage> implements StateManagable {
         body: Transform.translate(
           offset: Offset(_stateManager.rocketX, _stateManager.rocketY),
           child: Transform.rotate(
-            angle: _stateManager.angleRadian + math.pi * 0.25,
-            child: Text("🚀", style: TextStyle(fontSize: 50.0)),
+            angle: _stateManager.angleRadian + math.pi * 0.5,
+            child: Image.asset(
+                _stateManager.rocketMoving
+                    ? 'assets/sus-25-flame.png'
+                    : 'assets/sus-25.png',
+                width: 100),
           ),
         ),
         bottomNavigationBar: ActionBar(
