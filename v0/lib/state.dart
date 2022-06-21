@@ -51,7 +51,7 @@ class StateManager {
     return _angleDegree * (math.pi / 180);
   }
 
-  void tick() {
+  void tick(double deltaT) {
     if (_buttonsDown[RocketAction.left] == true) {
       _angleDegree--;
     }

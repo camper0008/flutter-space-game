@@ -22,8 +22,12 @@ class _GamePageState extends State<GamePage> implements StateManagable {
   void initState() {
     super.initState();
     _stateManager = StateManager(state: this);
+    var before = DateTime.now();
     _tickTimer = Timer.periodic(const Duration(milliseconds: 16), (_timer) {
-      _stateManager.tick();
+      var now = DateTime.now();
+      var deltaT = before.difference(now);
+      before = now;
+      _stateManager.tick(deltaT.inMicroseconds / 1000000);
     });
   }
 
