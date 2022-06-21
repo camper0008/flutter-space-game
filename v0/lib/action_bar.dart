@@ -3,18 +3,28 @@ import 'package:app_v0/state.dart';
 
 typedef void _ActionBarButtonChange(RocketAction value, bool pressed);
 
-Widget _actionButton(_ActionItem item, _ActionBarButtonChange setButtonDown, Map<RocketAction, bool> buttonsDown) =>
+Widget _actionButton(_ActionItem item, _ActionBarButtonChange setButtonDown,
+        Map<RocketAction, bool> buttonsDown) =>
     Expanded(
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: GestureDetector(
-          child: Icon(item.icon, color: buttonsDown[item.action] ?? false ? Colors.black : Colors.white),
-          onTapDown: (TapDownDetails details) {
-            setButtonDown(item.action, true);
-          },
-          onTapUp: (TapUpDetails details) {
-            setButtonDown(item.action, false);
-          },
+      child: SizedBox(
+        height: 64.0,
+        child: Stack(
+          children: [
+            Center(
+              child: Icon(item.icon,
+                  color: buttonsDown[item.action] ?? false
+                      ? Colors.black
+                      : Colors.white),
+            ),
+            GestureDetector(
+              onTapDown: (TapDownDetails details) {
+                setButtonDown(item.action, true);
+              },
+              onTapUp: (TapUpDetails details) {
+                setButtonDown(item.action, false);
+              },
+            ),
+          ],
         ),
       ),
     );
