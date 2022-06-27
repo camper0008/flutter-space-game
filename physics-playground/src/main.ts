@@ -60,8 +60,6 @@ const main = async () => {
                 absoluteForce: 5000,
                 radius: 5,
                 turnAngle: (5 / 180) * Math.PI,
-                // turnAngle: Math.PI / 4,
-                angle: 0,
             },
         },
     };

@@ -19,7 +19,6 @@ export type Game = {
             readonly absoluteForce: number;
             readonly radius: number;
             readonly turnAngle: number;
-            angle: number;
         };
     };
 };
@@ -108,7 +107,7 @@ export const tick = (game: Game, deltaT: number) => {
                   game.rocket.angle,
                   game.rocket.engine.radius,
                   game.rocket.engine.absoluteForce,
-                  game.rocket.engine.angle,
+                  thrustAngle(game),
               )
             : vec2d(),
     ].reduce((acc, v) => acc.add(v), vec2d());
