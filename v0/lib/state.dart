@@ -1,8 +1,5 @@
-import 'dart:collection';
 import 'dart:math' as math;
-
 import 'package:app_v0/vector2d.dart';
-import 'package:flutter/gestures.dart';
 
 abstract class StateManagable {
   void refreshState();

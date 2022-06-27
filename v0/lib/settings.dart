@@ -1,4 +1,3 @@
-import 'package:app_v0/levels.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {

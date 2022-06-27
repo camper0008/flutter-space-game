@@ -8,8 +8,10 @@ class LevelsPage extends StatefulWidget {
 
 class _LevelsPageState extends State<LevelsPage> {
   void goToLevel(int level) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => GamePage()));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => GamePage(level: 1)));
   }
 
   @override
