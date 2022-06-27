@@ -1,5 +1,5 @@
+import 'package:app_v0/start.dart';
 import 'package:flutter/material.dart';
-import 'package:app_v0/game.dart';
 
 void main() {
   runApp(const TrashApp());
@@ -16,7 +16,7 @@ class _TrashAppState extends State<TrashApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: GamePage(),
+      home: StartPage(),
     );
   }
 }

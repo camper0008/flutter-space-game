@@ -4,7 +4,12 @@ import 'package:app_v0/action_bar.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'levels/levelHandler.dart';
+
 class GamePage extends StatefulWidget {
+  final int level;
+
+  GamePage({required this.level});
   @override
   State<GamePage> createState() => _GamePageState();
 }
@@ -32,22 +37,32 @@ class _GamePageState extends State<GamePage> implements StateManagable {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Transform.translate(
-          offset: Offset(_stateManager.rocketX, _stateManager.rocketY),
-          child: Transform.rotate(
-            angle: _stateManager.angleRadian + math.pi * 0.5,
-            child: Image.asset(
-                _stateManager.rocketMoving
-                    ? 'assets/sus-25-flame.png'
-                    : 'assets/sus-25.png',
-                width: 100),
+  Widget build(BuildContext context) {
+    // Future.delayed(Duration.zero, () {
+    //   Stack(children: [loadLevel(widget.level, context)]);
+    // });
+    return Scaffold(
+      body: Stack(
+        children: [
+          Transform.translate(
+            offset: Offset(_stateManager.rocketX, _stateManager.rocketY),
+            child: Transform.rotate(
+              angle: _stateManager.angleRadian + math.pi * 0.5,
+              child: Image.asset(
+                  _stateManager.rocketMoving
+                      ? 'assets/sus-25-flame.png'
+                      : 'assets/sus-25.png',
+                  width: 100),
+            ),
           ),
-        ),
-        bottomNavigationBar: ActionBar(
-            setButtonDown: _stateManager.setButtonDown,
-            buttonsDown: _stateManager.buttonsDown),
-      );
+          loadLevel(widget.level, context)
+        ],
+      ),
+      bottomNavigationBar: ActionBar(
+          setButtonDown: _stateManager.setButtonDown,
+          buttonsDown: _stateManager.buttonsDown),
+    );
+  }
 }
 
 // vim: ts=2 sw=2
