@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "strict": true,
+        "alwaysStrict": true,
+        "lib": [
+            "ESNext",
+            "DOM",
+        ],
+        "noEmit": true,
+    }
+}

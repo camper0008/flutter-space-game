@@ -1,0 +1,1 @@
+esbuild --bundle src/main.ts --outfile=bundle.out.js --minify --sourcemap
