@@ -28,7 +28,10 @@ const render = (
     graphics.fillStyle = rgb(20, 20, 30);
     graphics.fillRect(0, 0, 800, 800);
     graphics.save();
-    graphics.translate(game.rocket.position.x, game.rocket.position.y);
+    graphics.translate(
+        game.rocket.position.x * 10,
+        game.rocket.position.y * 10,
+    );
     graphics.rotate(-game.rocket.angle);
     const size = ((s) => vec2d(s, (image.height / image.width) * s))(100);
     graphics.drawImage(image, -size.x / 2, -size.y / 2, size.x, size.y);
@@ -52,14 +55,14 @@ const main = async () => {
             height: 10,
             radius: 5,
             mass: 500,
-            position: vec2d(100, 100),
-            velocity: vec2d(),
+            position: vec2d(40, 40),
+            velocity: vec2d(0, 0),
             angle: 0,
             angularVelocity: 0,
             engine: {
                 absoluteForce: 5000,
                 radius: 5,
-                turnAngle: (5 / 180) * Math.PI,
+                turnAngle: (90 / 180) * Math.PI,
             },
         },
     };
