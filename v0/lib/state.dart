@@ -20,7 +20,7 @@ class StateManager {
   late double _rocketY = 0.0;
   late double _angleDegree = -90.0;
 
-  late Vector2d position = Vector2d(0, 0);
+  late Vector2d position = Vector2d(250, 550);
   late Vector2d positionalVelocity = Vector2d(0, 0);
   late double angle = 0.0;
   late double angularVelocity = 0.0;
