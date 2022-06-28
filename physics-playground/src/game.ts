@@ -76,8 +76,8 @@ export const thrustForce = (
 ): Vector2d => {
     // TODO: something about -torque
     const radiusUnitVector = vec2d(
-        Math.sin(rocketAngle + Math.PI),
-        Math.cos(rocketAngle + Math.PI),
+        Math.sin(rocketAngle + engineAngle + Math.PI),
+        Math.cos(rocketAngle + engineAngle + Math.PI),
     );
     const thrustForce = radiusUnitVector.copy().multiplyN(absoluteForce);
     return thrustForce;
@@ -97,8 +97,8 @@ export const tick = (game: Game, deltaT: number) => {
         game.rocket.mass,
     );
 
-    const rotationalAcceleration = (resultingTorque / momentOfInteria) * deltaT;
-    game.rocket.angularVelocity += rotationalAcceleration;
+    const rotationalAcceleration = resultingTorque / momentOfInteria;
+    game.rocket.angularVelocity += rotationalAcceleration * deltaT;
     game.rocket.angle += game.rocket.angularVelocity * deltaT;
 
     const resultingForce = [
@@ -110,10 +110,9 @@ export const tick = (game: Game, deltaT: number) => {
                   thrustAngle(game),
               )
             : vec2d(),
+        vec2d(0, 1000),
     ].reduce((acc, v) => acc.add(v), vec2d());
-    const transitionalAcceleration = resultingForce
-        .divideN(game.rocket.mass)
-        .multiplyN(deltaT);
-    game.rocket.velocity.add(transitionalAcceleration);
+    const transitionalAcceleration = resultingForce.divideN(game.rocket.mass);
+    game.rocket.velocity.add(transitionalAcceleration.copy().multiplyN(deltaT));
     game.rocket.position.add(game.rocket.velocity.copy().multiplyN(deltaT));
 };
